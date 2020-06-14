@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Continous Deployment of Lambda Function
+Resources:
+  fargateClusterCountToOne:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      FunctionName: 'fargateClusterCountToOne'
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: .
+      Description: "Lambda function To Set The Fargate Cluster Service Count To One"
+      MemorySize: 128
+      Timeout: 3
+      Role: 'arn:aws:iam::XXX_XXX:role/Lambda-ECS-ECR-SWF-AccessRole'
